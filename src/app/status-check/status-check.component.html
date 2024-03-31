@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Status Check</h2>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="serialNumber">
+          <th mat-header-cell *matHeaderCellDef> ID Number </th>
+          <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="product_name">
+          <th mat-header-cell *matHeaderCellDef> Product Name </th>
+          <td mat-cell *matCellDef="let element">{{ element.product_name }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef> Quantity </th>
+          <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="specification">
+          <th mat-header-cell *matHeaderCellDef> Specification </th>
+          <td mat-cell *matCellDef="let element">{{ element.specification }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="vendor_name">
+          <th mat-header-cell *matHeaderCellDef> Vendor Name </th>
+          <td mat-cell *matCellDef="let element">{{ element.vendor_name }}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="approve">
+          <th mat-header-cell *matHeaderCellDef> Approve </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-raised-button class="approve-button" (click)="approveProduct(element.id)">Approve</button>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>

@@ -1,0 +1,51 @@
+
+  
+  table {
+   width:1200px;
+    overflow: hidden;
+    box-shadow: grey;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    color: black;
+  }
+  
+  th {
+    font-weight: bold;
+    color: black;
+  }
+  
+/*.tr:nth-child(even) {
+    background-color:rgb(255, 214, 241);
+  }
+  tr:nth-child(odd){
+    background-color:azure;
+  }*/
+
+  /* stored-data.component.css */
+.update-button {
+  background-color:green !important;
+  color: white !important;
+  border-radius: 20%;
+}
+
+.delete-button {
+  background-color: red !important;
+  color: white !important;
+  border-radius: 20%;
+  
+}
+.save-button {
+  background-color: blue !important;
+  color: white !important;
+  border-radius: 20%;
+  
+}
+.cancel-button {
+  background-color:gold !important;
+  color: black !important;
+  border-radius: 20%;
+  
+}

@@ -1,0 +1,72 @@
+
+
+<div class="container">
+  <h2>Stored Data</h2>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="serialNumber">
+        <th mat-header-cell *matHeaderCellDef> ID Number </th>
+        <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="product_name">
+        <th mat-header-cell *matHeaderCellDef> Product Name </th>
+        <td mat-cell *matCellDef="let element"> 
+          <span *ngIf="editingRow !== element; else editableProductName">{{ element.product_name }}</span>
+          <ng-template #editableProductName>
+            <input [(ngModel)]="editedProduct.product_name" />
+          </ng-template>
+         </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> 
+          <span *ngIf="editingRow !== element; else editableQuantity">{{ element.quantity }} </span>
+          <ng-template #editableQuantity>
+            <input  [(ngModel)]="editedProduct.quantity" />
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="specification">
+        <th mat-header-cell *matHeaderCellDef> Specification </th>
+        <td mat-cell *matCellDef="let element"> 
+          <span *ngIf="editingRow !== element; else editableSpecification">{{ element.specification }}</span>
+          <ng-template #editableSpecification>
+            <input [(ngModel)]="editedProduct.specification" />
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vendor_name">
+        <th mat-header-cell *matHeaderCellDef> Vendor Name </th>
+        <td mat-cell *matCellDef="let element"> 
+          <span *ngIf="editingRow !== element; else editableVendorName">{{ element.vendor_name }}</span>
+          <ng-template #editableVendorName>
+            <input [(ngModel)]="editedProduct.vendor_name" />
+          </ng-template> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef> Update </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button class="update-button" (click)="startEditing(element)">Edit</button>
+          <button mat-raised-button class="save-button"*ngIf="editingRow === element" (click)="saveChanges()">Save</button>
+          <button mat-raised-button class="cancel-button"*ngIf="editingRow === element" (click)="cancelEditing()">Cancel</button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button class="delete-button" (click)="deleteProduct(element.id)">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
